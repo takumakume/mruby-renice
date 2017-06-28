@@ -1,5 +1,5 @@
 name: mruby-renice
-description: Renice class
+description: getpriority(2)/setpriority(2) for mruby, it like renice(1)
 author: takumakume
 website: https://github.com/takumakume/mruby-renice
 protocol: git
