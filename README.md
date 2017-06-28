@@ -1,5 +1,7 @@
 # mruby-renice   [![Build Status](https://travis-ci.org/takumakume/mruby-renice.svg?branch=master)](https://travis-ci.org/takumakume/mruby-renice)
-Renice class
+
+getpriority(2)/setpriority(2) for mruby, it like renice(1)
+
 ## install by mrbgems
 - add conf.gem line to `build_config.rb`
 
@@ -11,17 +13,35 @@ MRuby::Build.new do |conf|
     conf.gem :github => 'takumakume/mruby-renice'
 end
 ```
-## example
-```ruby
-p Renice.hi
-#=> "hi!!"
-t = Renice.new "hello"
-p t.hello
-#=> "hello"
-p t.bye
-#=> "hello bye"
-```
+
+## usage
+
+- for process
+
+  ```ruby
+  Renice::Process.get(pid)
+  #=> 0
+
+  Renice::Process.set(pid, prio)
+  #=> true or raise
+  ```
+
+- for process group
+
+  ```ruby
+  Renice::ProcessGroup.get(pgid)
+  Renice::ProcessGroup.set(pgid, prio)
+  ```
+
+- for process group
+
+  ```ruby
+  Renice::User.get(uid)
+  Renice::User.set(uid, prio)
+  ```
 
 ## License
+
 under the MIT License:
+
 - see LICENSE file
